@@ -10,11 +10,29 @@ import RxSwift
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var photoImageView: UIImageView!
+
+    private let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navC = segue.destination as? UINavigationController,
+              let photosCVC = navC.viewControllers.first as? PhotosCollectionViewController else {
+            fatalError("segue destination을 찾을 수 없음")
+        }
+
+        photosCVC.selectedPhoto.subscribe { [weak self] photo in
+
+            self?.photoImageView.image = photo
+            
+        }.disposed(by: disposeBag)
+
+    }
 
 }
 

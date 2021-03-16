@@ -7,8 +7,14 @@
 
 import UIKit
 import Photos
+import RxSwift
 
 final class PhotosCollectionViewController: UICollectionViewController {
+
+    private let selectedPhotoSubject = PublishSubject<UIImage>()
+    var selectedPhoto: Observable<UIImage> {
+        return selectedPhotoSubject.asObserver()
+    }
 
     private var images = [PHAsset]()
 
@@ -86,4 +92,30 @@ extension PhotosCollectionViewController {
 
         return cell
     }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let selectedAsset = self.images[indexPath.row]
+            let imageSize = CGSize(width: 300, height: 300)
+
+            // requestImage 메서드는 두 번 불린다
+            // 1번째 -> 썸네일 이미지 요청
+            // 2번째 -> 오리지널 이미지 요청
+            PHImageManager.default().requestImage(
+                for: selectedAsset,
+                targetSize: imageSize,
+                contentMode: .aspectFit,
+                options: nil,
+                resultHandler: { [weak self] image, info in
+
+                    guard let info = info else { return }
+
+                    if let isDegradedImgage = info["PHImageResultIsDegradedKey"] as? Bool,
+                       !isDegradedImgage,
+                       let image = image {
+
+                        self?.selectedPhotoSubject.onNext(image)
+                        self?.dismiss(animated: true, completion: nil)
+                    }
+                })
+        }
 }
