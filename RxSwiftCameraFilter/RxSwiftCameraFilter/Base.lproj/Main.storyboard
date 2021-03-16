@@ -63,20 +63,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nlz-mZ-9KX">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nlz-mZ-9KX">
                             <size key="itemSize" width="128" height="128"/>
+                            <size key="estimatedItemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hKi-T4-bHg">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotosCollectionViewCell" id="hKi-T4-bHg" customClass="PhotosCollectionViewCell" customModule="RxSwiftCameraFilter" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vTh-qv-4Cn">
                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xqr-3a-UGm">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="xqr-3a-UGm" firstAttribute="height" secondItem="vTh-qv-4Cn" secondAttribute="height" id="5WO-zv-M6z"/>
+                                        <constraint firstItem="xqr-3a-UGm" firstAttribute="top" secondItem="vTh-qv-4Cn" secondAttribute="top" id="BWw-6q-UAo"/>
+                                        <constraint firstItem="xqr-3a-UGm" firstAttribute="width" secondItem="vTh-qv-4Cn" secondAttribute="width" id="dzo-9W-P7W"/>
+                                        <constraint firstItem="xqr-3a-UGm" firstAttribute="leading" secondItem="vTh-qv-4Cn" secondAttribute="leading" id="kg0-5O-Xvz"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
+                                <connections>
+                                    <outlet property="photoImageView" destination="xqr-3a-UGm" id="kF3-Xk-UCp"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -88,7 +103,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vho-yX-wzH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3012" y="131"/>
+            <point key="canvasLocation" x="3011.594202898551" y="130.58035714285714"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GHM-It-qk7">
