@@ -44,9 +44,14 @@ class ViewController: UIViewController {
     @IBAction func applyFilterButtonPressed() {
         guard let sourceImage = self.photoImageView.image else { return }
 
-        FilterService().applyFilter(to: sourceImage) { [weak self] filteredImage in
-            self?.updateUI(with: filteredImage)
-        }
+        FilterService().applyFilter(to: sourceImage)
+            .subscribe { [weak self] filteredImage in
+
+                DispatchQueue.main.async {
+                    self?.updateUI(with: filteredImage)
+                }
+
+            }.disposed(by: disposeBag)
     }
 }
 
