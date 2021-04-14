@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RestaurantsListViewController.swift
 //  MVVMRxSwift
 //
 //  Created by Yebin Kim on 2021/04/13.
@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ViewController: UIViewController {
+final class RestaurantsListViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
 
@@ -17,9 +17,9 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    static func instantiate(viewModel: RestaurantsListViewModel) -> ViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        let viewController = storyboard.instantiateInitialViewController() as! ViewController
+    static func instantiate(viewModel: RestaurantsListViewModel) -> RestaurantsListViewController {
+        let storyboard = UIStoryboard(name: "RestaurantsListView", bundle: .main)
+        let viewController = storyboard.instantiateInitialViewController() as! RestaurantsListViewController
         viewController.viewModel = viewModel
         return viewController
     }
