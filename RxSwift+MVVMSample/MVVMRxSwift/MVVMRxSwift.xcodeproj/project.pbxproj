@@ -94,19 +94,67 @@
 			children = (
 				C37041882624AFB7000AC693 /* AppDelegate.swift */,
 				C370418A2624AFB7000AC693 /* SceneDelegate.swift */,
-				C3D3FB8F2625D08700C0233D /* AppCoordinator.swift */,
-				C370418C2624AFB7000AC693 /* ViewController.swift */,
-				C3D3FB9B2625D71500C0233D /* Restaurant.swift */,
-				C3D3FBA32625D7A900C0233D /* RestaurantService.swift */,
-				C3D3FBAB2625DD7400C0233D /* RestaurantsListViewModel.swift */,
-				C3D3FBAF2625DE5300C0233D /* RestaurantViewModel.swift */,
-				C370418E2624AFB7000AC693 /* Main.storyboard */,
-				C37041912624AFB9000AC693 /* Assets.xcassets */,
-				C37041932624AFB9000AC693 /* LaunchScreen.storyboard */,
-				C37041962624AFB9000AC693 /* Info.plist */,
-				C3D3FB982625D67800C0233D /* restaurants.json */,
+				C37B0737262736CD0009670C /* Coordinator */,
+				C37B0734262735750009670C /* Model */,
+				C37B0739262737470009670C /* Restaurant */,
+				C37B073A2627376E0009670C /* Network */,
+				C37B0738262737220009670C /* Assets */,
+				C37B073B2627377D0009670C /* Supporting Files */,
 			);
 			path = MVVMRxSwift;
+			sourceTree = "<group>";
+		};
+		C37B0734262735750009670C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C3D3FB9B2625D71500C0233D /* Restaurant.swift */,
+				C3D3FBAF2625DE5300C0233D /* RestaurantViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C37B0737262736CD0009670C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C3D3FB8F2625D08700C0233D /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C37B0738262737220009670C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C37041912624AFB9000AC693 /* Assets.xcassets */,
+				C3D3FB982625D67800C0233D /* restaurants.json */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		C37B0739262737470009670C /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				C370418E2624AFB7000AC693 /* Main.storyboard */,
+				C370418C2624AFB7000AC693 /* ViewController.swift */,
+				C3D3FBAB2625DD7400C0233D /* RestaurantsListViewModel.swift */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		C37B073A2627376E0009670C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C3D3FBA32625D7A900C0233D /* RestaurantService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C37B073B2627377D0009670C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C37041932624AFB9000AC693 /* LaunchScreen.storyboard */,
+				C37041962624AFB9000AC693 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,7 +429,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5RZ7AYRC2;
-				INFOPLIST_FILE = MVVMRxSwift/Info.plist;
+				INFOPLIST_FILE = "MVVMRxSwift/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -401,7 +449,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5RZ7AYRC2;
-				INFOPLIST_FILE = MVVMRxSwift/Info.plist;
+				INFOPLIST_FILE = "MVVMRxSwift/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
