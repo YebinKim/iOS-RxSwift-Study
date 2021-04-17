@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Blue Legume",
+        "cuisine": "european"
+    },
+    {
+        "name": "Fig & Olive",
+        "cuisine": "european"
+    },
+    {
+        "name": "Le Mercury",
+        "cuisine": "french"
+    },
+    {
+        "name": "Dishoom",
+        "cuisine": "indian"
+    },
+    {
+        "name": "The Grand Brasserie",
+        "cuisine": "french"
+    },
+    {
+        "name": "Wahaca",
+        "cuisine": "mexican"
+    },
+    {
+        "name": "The Islington",
+        "cuisine": "english"
+    },
+]
