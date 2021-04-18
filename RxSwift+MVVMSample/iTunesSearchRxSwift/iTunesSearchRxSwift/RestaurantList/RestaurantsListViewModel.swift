@@ -12,16 +12,16 @@ final class RestaurantsListViewModel {
 
     let title = "Restaurants"
 
-    private let restaurantService: RestaurantServiceProtocol
+    private let searchService: SearchServiceProtocol
 
-    init(restaurantService: RestaurantServiceProtocol = RestaurantService()) {
-        self.restaurantService = restaurantService
+    init(restaurantService: SearchServiceProtocol = SearchService()) {
+        self.searchService = restaurantService
     }
 
-    func fetchRestaurantViewModel() -> Observable<[RestaurantViewModel]> {
-        restaurantService.fetchRestaurants()
+    func fetchRestaurantViewModel() -> Observable<[Track]> {
+        searchService.getSearchResults(searchItem: "shawn")
             .map {
-                $0.map { RestaurantViewModel(restaurant: $0) }
+                $0
             }
     }
 }

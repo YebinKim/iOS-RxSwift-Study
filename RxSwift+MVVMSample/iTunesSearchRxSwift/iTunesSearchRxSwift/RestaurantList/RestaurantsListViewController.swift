@@ -34,7 +34,7 @@ final class RestaurantsListViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             // tableView cell에 viewModel 데이터를 바인딩
             .bind(to: tableView.rx.items(cellIdentifier: "cell")) { index, viewModel, cell in
-                cell.textLabel?.text = viewModel.displayTest
+                cell.textLabel?.text = viewModel.artistName
             }
             .disposed(by: disposeBag)
     }
