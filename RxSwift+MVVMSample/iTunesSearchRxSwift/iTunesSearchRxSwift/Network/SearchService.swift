@@ -21,6 +21,8 @@ class SearchService: SearchServiceProtocol {
 
     func getSearchResults(searchItem item: String) -> Observable<[Track]> {
 
+        self.dataTask?.cancel()
+
         let url = SearchAPIConstant.search(item).url
         var request = URLRequest(url: url)
         request.httpMethod = SearchAPIConstant.search(item).method
@@ -45,9 +47,7 @@ class SearchService: SearchServiceProtocol {
             }
             self.dataTask?.resume()
 
-            return Disposables.create {
-                self.dataTask?.cancel()
-            }
+            return Disposables.create()
         }
     }
 }
