@@ -37,7 +37,7 @@ final class TrackListViewController: UIViewController {
             .bind(to: tableView.rx.items(cellIdentifier: TrackCell.identifier, cellType: TrackCell.self)) { index, viewModel, cell in
                 cell.songNameLabel.text = viewModel.songName
                 cell.artistNameLabel.text = viewModel.artistName
-//                cell.thumbnailImageView.image = viewModel.smallThumbnailUrl
+                cell.thumbnailImageView.setImage(urlString: viewModel.thumbnailUrl)
             }
             .disposed(by: disposeBag)
     }

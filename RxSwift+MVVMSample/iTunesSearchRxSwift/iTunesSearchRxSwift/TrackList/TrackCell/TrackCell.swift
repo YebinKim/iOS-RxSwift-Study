@@ -26,4 +26,10 @@ final class TrackCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+
+    override func prepareForReuse() {
+        self.thumbnailImageView.image = nil
+        self.songNameLabel.text = nil
+        self.artistNameLabel.text = nil
+    }
 }
