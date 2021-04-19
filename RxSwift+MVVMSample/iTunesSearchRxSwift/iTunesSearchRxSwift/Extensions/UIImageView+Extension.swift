@@ -1,5 +1,5 @@
 //
-//  UIImage+Extension.swift
+//  UIImageView+Extension.swift
 //  iTunesSearchRxSwift
 //
 //  Created by Yebin Kim on 2021/04/19.
@@ -9,8 +9,8 @@ import UIKit
 
 extension UIImageView {
 
-    func setImage(urlString: String) {
-        guard let url = URL(string: urlString) else {
+    func setImage(urlString url: String) {
+        guard let url = URL(string: url) else {
             print("[UIImageView] setImage URL 오류")
             return
         }

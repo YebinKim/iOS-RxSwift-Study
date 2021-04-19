@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		21A875347EDD0D5ED9718584 /* Pods_iTunesSearchRxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78091729C1003674B5E9885D /* Pods_iTunesSearchRxSwift.framework */; };
-		C31AB02B262DC9D00012437F /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31AB02A262DC9D00012437F /* UIImage+Extension.swift */; };
+		C31AB02B262DC9D00012437F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31AB02A262DC9D00012437F /* UIImageView+Extension.swift */; };
 		C37041892624AFB7000AC693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37041882624AFB7000AC693 /* AppDelegate.swift */; };
 		C370418B2624AFB7000AC693 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C370418A2624AFB7000AC693 /* SceneDelegate.swift */; };
 		C370418D2624AFB7000AC693 /* TrackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C370418C2624AFB7000AC693 /* TrackListViewController.swift */; };
@@ -31,7 +31,7 @@
 		78091729C1003674B5E9885D /* Pods_iTunesSearchRxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesSearchRxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA696DE343D2E80C667B103C /* Pods-iTunesSearchRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesSearchRxSwift.debug.xcconfig"; path = "Target Support Files/Pods-iTunesSearchRxSwift/Pods-iTunesSearchRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		B468D915EDA86AE8FB4B3F67 /* Pods-MVVMRxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMRxSwift.release.xcconfig"; path = "Target Support Files/Pods-MVVMRxSwift/Pods-MVVMRxSwift.release.xcconfig"; sourceTree = "<group>"; };
-		C31AB02A262DC9D00012437F /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		C31AB02A262DC9D00012437F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		C37041852624AFB7000AC693 /* iTunesSearchRxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesSearchRxSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37041882624AFB7000AC693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C370418A2624AFB7000AC693 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		C31AB029262DC9BE0012437F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C31AB02A262DC9D00012437F /* UIImage+Extension.swift */,
+				C31AB02A262DC9D00012437F /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -309,7 +309,7 @@
 				C37041892624AFB7000AC693 /* AppDelegate.swift in Sources */,
 				C3F2B925262C62AD002F1632 /* SearchAPIConstant.swift in Sources */,
 				C3D3FBA42625D7A900C0233D /* SearchService.swift in Sources */,
-				C31AB02B262DC9D00012437F /* UIImage+Extension.swift in Sources */,
+				C31AB02B262DC9D00012437F /* UIImageView+Extension.swift in Sources */,
 				C3D3FBAC2625DD7400C0233D /* TrackListViewModel.swift in Sources */,
 				C370418B2624AFB7000AC693 /* SceneDelegate.swift in Sources */,
 			);
