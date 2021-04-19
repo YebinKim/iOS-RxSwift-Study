@@ -18,6 +18,7 @@ final class TrackListViewController: UIViewController {
     // MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
 
+    // MARK: - Initializer
     static func instantiate(viewModel: TrackListViewModel) -> TrackListViewController {
         let storyboard = UIStoryboard(name: "TrackListView", bundle: .main)
         let viewController = storyboard.instantiateInitialViewController() as! TrackListViewController
@@ -32,14 +33,9 @@ final class TrackListViewController: UIViewController {
         registCell()
         initializeTableView()
 
-        viewModel.getSearchViewModel(searchItem: "shawn")
-            .observe(on: MainScheduler.instance)
-            .bind(to: tableView.rx.items(cellIdentifier: TrackCell.identifier, cellType: TrackCell.self)) { index, viewModel, cell in
-                cell.songNameLabel.text = viewModel.songName
-                cell.artistNameLabel.text = viewModel.artistName
-                cell.thumbnailImageView.setImage(urlString: viewModel.thumbnailUrl)
-            }
-            .disposed(by: disposeBag)
+        bindToViewModel()
+
+        viewModel.searchTrackList(searchItem: "Shawn")
     }
 
     // MARK: Initializer
@@ -49,12 +45,29 @@ final class TrackListViewController: UIViewController {
     }
 
     private func initializeTableView() {
-        navigationItem.title = viewModel.title
-        navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.contentInsetAdjustmentBehavior = .never
 
         tableView.rx
             .setDelegate(self)
+            .disposed(by: disposeBag)
+    }
+
+    private func bindToViewModel() {
+        viewModel.title
+            .asDriver()
+            .drive(self.navigationItem.rx.title)
+            .disposed(by: disposeBag)
+
+        viewModel.trackList
+            .asDriver()
+            .drive(
+                tableView.rx.items(cellIdentifier: TrackCell.identifier, cellType: TrackCell.self
+                )) { index, viewModel, cell in
+                cell.songNameLabel.text = viewModel.songName
+                cell.artistNameLabel.text = viewModel.artistName
+                cell.thumbnailImageView.setImage(urlString: viewModel.thumbnailUrl)
+            }
             .disposed(by: disposeBag)
     }
 }

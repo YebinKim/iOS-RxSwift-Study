@@ -7,19 +7,25 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
 final class TrackListViewModel {
 
-    let title = "iTunes Search"
-
+    // MARK: Properties
+    private let disposeBag = DisposeBag()
     private let searchService: SearchServiceProtocol
 
+    let title = BehaviorRelay<String>(value: "iTunes Search")
+    let trackList = BehaviorRelay<[Track]>(value: [])
+
+    // MARK: - Initializer
     init(searchService: SearchServiceProtocol = SearchService()) {
         self.searchService = searchService
     }
 
-    func getSearchViewModel(searchItem: String) -> Observable<[Track]> {
+    func searchTrackList(searchItem: String) {
         searchService.getSearchResults(searchItem: searchItem)
-            .map { $0 }
+            .bind(to: trackList)
+            .disposed(by: disposeBag)
     }
 }
