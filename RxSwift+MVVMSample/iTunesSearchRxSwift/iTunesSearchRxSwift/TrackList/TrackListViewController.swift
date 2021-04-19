@@ -36,6 +36,14 @@ final class TrackListViewController: UIViewController {
         bindToViewModel()
 
         viewModel.searchTrackList(searchItem: "Shawn")
+
+        tableView.rx.itemSelected
+            .subscribe {
+                let viewController = TrackDetailViewController.instantiate(viewModel: TrackDetailViewModel())
+                self.present(viewController, animated: true)
+                print($0)
+            }
+            .disposed(by: disposeBag)
     }
 
     // MARK: Initializer
