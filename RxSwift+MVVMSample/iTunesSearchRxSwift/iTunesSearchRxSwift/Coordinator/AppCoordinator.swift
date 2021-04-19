@@ -16,7 +16,7 @@ class AppCoordinator {
     }
 
     func start() {
-        let viewController = RestaurantsListViewController.instantiate(viewModel: RestaurantsListViewModel())
+        let viewController = TrackListViewController.instantiate(viewModel: TrackListViewModel())
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
