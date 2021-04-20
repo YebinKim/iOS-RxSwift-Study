@@ -96,6 +96,13 @@
                             <constraint firstItem="zUV-zg-y8p" firstAttribute="top" secondItem="lrS-z0-A8I" secondAttribute="top" constant="80" id="xSV-g9-sqW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="artistNameLabel" destination="ZWz-wC-UkR" id="go4-go-E1V"/>
+                        <outlet property="playButton" destination="zWS-Gi-b27" id="baD-6F-8uO"/>
+                        <outlet property="playSlider" destination="4sh-M5-VZG" id="0f6-79-rG6"/>
+                        <outlet property="songNameLabel" destination="xRe-tV-bJm" id="HPD-mg-Jb8"/>
+                        <outlet property="thumbnailImageView" destination="t9L-E9-mP1" id="eJa-l5-jHQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFJ-lC-Tjd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

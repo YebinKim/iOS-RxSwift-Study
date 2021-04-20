@@ -39,11 +39,10 @@ final class TrackListViewController: UIViewController {
 
         viewModel.searchTrackList(searchItem: "Shawn")
 
-        tableView.rx.itemSelected
-            .subscribe {
-                self.coordinator?.presentTrackDetailVC()
-                print($0)
-            }
+        tableView.rx.modelSelected(Track.self)
+            .subscribe(onNext: {
+                self.coordinator?.presentTrackDetailVC(selectedTrack: $0)
+            })
             .disposed(by: disposeBag)
     }
 
@@ -98,8 +97,8 @@ class TrackListCoordinator: Coordinator {
         self.router = router
     }
 
-    func presentTrackDetailVC() {
-        let trackListVC = TrackDetailViewController.instantiate(viewModel: TrackDetailViewModel())
+    func presentTrackDetailVC(selectedTrack track: Track) {
+        let trackListVC = TrackDetailViewController.instantiate(viewModel: TrackDetailViewModel(track: track))
         self.present(viewController: trackListVC, animated: true, isModal: true)
     }
 }
