@@ -15,6 +15,8 @@ final class TrackListViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var viewModel: TrackListViewModel!
 
+    var coordinator: TrackListCoordinator?
+
     // MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
 
@@ -39,8 +41,7 @@ final class TrackListViewController: UIViewController {
 
         tableView.rx.itemSelected
             .subscribe {
-                let viewController = TrackDetailViewController.instantiate(viewModel: TrackDetailViewModel())
-                self.present(viewController, animated: true)
+                self.coordinator?.presentTrackDetailVC()
                 print($0)
             }
             .disposed(by: disposeBag)
@@ -85,5 +86,20 @@ extension TrackListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return TrackCell.cellForHeight
+    }
+}
+
+// MARK: - Coordinator
+class TrackListCoordinator: Coordinator {
+
+    weak var router: Router?
+
+    init(router: Router) {
+        self.router = router
+    }
+
+    func presentTrackDetailVC() {
+        let trackListVC = TrackDetailViewController.instantiate(viewModel: TrackDetailViewModel())
+        self.present(viewController: trackListVC, animated: true, isModal: true)
     }
 }

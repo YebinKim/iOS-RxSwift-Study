@@ -7,18 +7,39 @@
 
 import UIKit
 
-class AppCoordinator {
+// MARK: - Coordinator
+protocol Coordinator: class {
 
-    private let window: UIWindow
+    var router: Router? { get }
 
-    init(window: UIWindow) {
-        self.window = window
+    func present(viewController: UIViewController, animated: Bool, isModal: Bool)
+    func dismiss(animated: Bool)
+}
+
+extension Coordinator {
+
+    func present(viewController: UIViewController, animated: Bool, isModal: Bool = false) {
+        router?.show(viewController, animated: animated, isModal: isModal)
+    }
+
+    func dismiss(animated: Bool) {
+        router?.hide(animated: animated)
+    }
+}
+
+// MARK: - AppCoordinator
+final class AppCoordinator: Coordinator {
+
+    weak var router: Router?
+
+    init(router: Router) {
+        self.router = router
     }
 
     func start() {
-        let viewController = TrackListViewController.instantiate(viewModel: TrackListViewModel())
-        let navigationController = UINavigationController(rootViewController: viewController)
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
+        let trackListViewController = TrackListViewController.instantiate(viewModel: TrackListViewModel())
+        let naviCon = UINavigationController(rootViewController: trackListViewController)
+        trackListViewController.coordinator = TrackListCoordinator(router: naviCon)
+        present(viewController: naviCon, animated: true)
     }
 }

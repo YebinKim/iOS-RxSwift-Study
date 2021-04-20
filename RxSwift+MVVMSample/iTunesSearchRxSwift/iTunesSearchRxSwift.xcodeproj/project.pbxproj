@@ -22,6 +22,7 @@
 		C3D3FB992625D67800C0233D /* restaurants.json in Resources */ = {isa = PBXBuildFile; fileRef = C3D3FB982625D67800C0233D /* restaurants.json */; };
 		C3D3FBA42625D7A900C0233D /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D3FBA32625D7A900C0233D /* SearchService.swift */; };
 		C3D3FBAC2625DD7400C0233D /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D3FBAB2625DD7400C0233D /* TrackListViewModel.swift */; };
+		C3E468EC262F182B003BCE71 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E468EB262F182B003BCE71 /* Router.swift */; };
 		C3F2B925262C62AD002F1632 /* SearchAPIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F2B924262C62AD002F1632 /* SearchAPIConstant.swift */; };
 		C3F2B931262C698F002F1632 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F2B930262C698F002F1632 /* Track.swift */; };
 		C3F2B948262C7C35002F1632 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F2B947262C7C35002F1632 /* TrackCell.swift */; };
@@ -50,6 +51,7 @@
 		C3D3FB982625D67800C0233D /* restaurants.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = restaurants.json; sourceTree = "<group>"; };
 		C3D3FBA32625D7A900C0233D /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		C3D3FBAB2625DD7400C0233D /* TrackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
+		C3E468EB262F182B003BCE71 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C3F2B924262C62AD002F1632 /* SearchAPIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPIConstant.swift; sourceTree = "<group>"; };
 		C3F2B930262C698F002F1632 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		C3F2B947262C7C35002F1632 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		C37B0737262736CD0009670C /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				C3E468EB262F182B003BCE71 /* Router.swift */,
 				C3D3FB8F2625D08700C0233D /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
@@ -332,6 +335,7 @@
 				C31AB034262DD6B40012437F /* TrackDetailViewModel.swift in Sources */,
 				C3D3FBAC2625DD7400C0233D /* TrackListViewModel.swift in Sources */,
 				C370418B2624AFB7000AC693 /* SceneDelegate.swift in Sources */,
+				C3E468EC262F182B003BCE71 /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
