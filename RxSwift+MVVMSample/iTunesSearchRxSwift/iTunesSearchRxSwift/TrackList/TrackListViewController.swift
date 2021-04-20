@@ -35,14 +35,9 @@ final class TrackListViewController: UIViewController {
 
         registCell()
         initializeTableView()
-
+        
+        didSelectCell()
         bindToViewModel()
-
-        tableView.rx.modelSelected(Track.self)
-            .subscribe(onNext: {
-                self.coordinator?.presentTrackDetailVC(selectedTrack: $0)
-            })
-            .disposed(by: disposeBag)
     }
 
     // MARK: Initializer
@@ -57,6 +52,14 @@ final class TrackListViewController: UIViewController {
 
         tableView.rx
             .setDelegate(self)
+            .disposed(by: disposeBag)
+    }
+
+    private func didSelectCell() {
+        tableView.rx.modelSelected(Track.self)
+            .subscribe(onNext: {
+                self.coordinator?.presentTrackDetailVC(selectedTrack: $0)
+            })
             .disposed(by: disposeBag)
     }
 
