@@ -17,7 +17,9 @@ enum SearchAPIConstant {
     var url: URL {
         switch self {
         case .search:
-            return URL(string: "\(SearchAPIConstant.baseUrl)\(path)\(query)")!
+            let urlString = "\(SearchAPIConstant.baseUrl)\(path)\(query)"
+                .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            return URL(string: urlString)!
         }
     }
 
