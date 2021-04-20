@@ -31,7 +31,8 @@ enum SearchAPIConstant {
     private var query: String {
         switch self {
         case .search(let searchItem):
-            return "/media=music&entity=song&term=\(searchItem)"
+            let text = searchItem.replacingOccurrences(of: " ", with: "+")
+            return "/media=music&entity=song&term=\(text)"
         }
     }
 

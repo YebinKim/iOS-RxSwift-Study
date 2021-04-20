@@ -19,6 +19,7 @@ final class TrackListViewController: UIViewController {
 
     // MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
 
     // MARK: - Initializer
     static func instantiate(viewModel: TrackListViewModel) -> TrackListViewController {
@@ -36,8 +37,6 @@ final class TrackListViewController: UIViewController {
         initializeTableView()
 
         bindToViewModel()
-
-        viewModel.searchTrackList(searchItem: "Shawn")
 
         tableView.rx.modelSelected(Track.self)
             .subscribe(onNext: {
@@ -76,6 +75,16 @@ final class TrackListViewController: UIViewController {
                 cell.artistNameLabel.text = viewModel.artistName
                 cell.thumbnailImageView.setImage(urlString: viewModel.thumbnailUrl)
             }
+            .disposed(by: disposeBag)
+
+        searchBar.rx.text
+            .orEmpty
+            .debounce(RxTimeInterval.milliseconds(300), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext: { text in
+                self.viewModel.searchTrackList(searchItem: text)
+                self.tableView.reloadData()
+            })
             .disposed(by: disposeBag)
     }
 }
