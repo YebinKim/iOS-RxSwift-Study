@@ -34,15 +34,13 @@ class SearchService: SearchServiceProtocol {
                     self?.dataTask = nil
                 }
 
-                guard let data = data else {
-                    return observer.onError(error!)
-                }
-
-                do {
-                    let tracks = try JSONDecoder().decode(Tracks.self, from: data)
-                    observer.onNext(tracks.results)
-                } catch(let error) {
-                    observer.onError(error)
+                if let data = data {
+                    do {
+                        let tracks = try JSONDecoder().decode(Tracks.self, from: data)
+                        observer.onNext(tracks.results)
+                    } catch(let error) {
+                        observer.onError(error)
+                    }
                 }
             }
             self.dataTask?.resume()
