@@ -37,6 +37,17 @@ final class TrackDetailViewController: UIViewController {
         bindToViewModel()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        viewModel.player
+            .asDriver()
+            .drive {
+                $0.pause()
+            }
+            .disposed(by: disposeBag)
+    }
+
     private func bindToViewModel() {
         viewModel.selectedTrack
             .asDriver()
