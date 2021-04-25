@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import AVFoundation
 
 final class TrackDetailViewController: UIViewController {
 
@@ -18,6 +19,7 @@ final class TrackDetailViewController: UIViewController {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var volumeSlider: UISlider!
     @IBOutlet weak var playSlider: UISlider!
     @IBOutlet weak var playButton: UIButton!
 
@@ -42,6 +44,43 @@ final class TrackDetailViewController: UIViewController {
                 self.thumbnailImageView.setImage(urlString: $0.thumbnailUrl)
                 self.songNameLabel.text = $0.songName
                 self.artistNameLabel.text = $0.artistName
+            }
+            .disposed(by: disposeBag)
+
+        viewModel.player
+            .asDriver()
+            .drive { player in
+                self.playButton.rx.tap
+                    .bind {
+                        if player.timeControlStatus == .paused {
+                            player.play()
+                            self.playButton.setTitle("Pause", for: .normal)
+                        } else {
+                            player.pause()
+                            self.playButton.setTitle("Play", for: .normal)
+                        }
+                    }
+                    .disposed(by: self.disposeBag)
+
+                self.volumeSlider.rx.value
+                    .bind(to: player.rx.volume)
+                    .disposed(by: self.disposeBag)
+
+                self.playSlider.rx.value
+                    .subscribe(onNext: { value in
+                        guard let item = player.currentItem else { return }
+                        let nowSeconds: Double = Double(value) * item.duration.seconds
+                        let seekTime = CMTime(seconds: nowSeconds, preferredTimescale: 100)
+                        player.currentItem?.seek(to: seekTime, completionHandler: nil)
+                    })
+                    .disposed(by: self.disposeBag)
+
+                player.addPeriodicTimeObserver(
+                    forInterval: .init(value: 1, timescale: 100),
+                    queue: .main) { _ in
+                    guard let item = player.currentItem else { return }
+                    self.playSlider.value = Float(item.currentTime().seconds / item.duration.seconds)
+                }
             }
             .disposed(by: disposeBag)
     }
