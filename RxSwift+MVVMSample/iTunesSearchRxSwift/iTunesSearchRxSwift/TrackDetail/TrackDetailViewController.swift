@@ -19,7 +19,7 @@ final class TrackDetailViewController: UIViewController {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
-    @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var volumeSlider: CirculerSlider!
     @IBOutlet weak var playSlider: UISlider!
     @IBOutlet weak var playButton: UIButton!
 
@@ -34,6 +34,7 @@ final class TrackDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        applyStyle()
         bindToViewModel()
     }
 
@@ -46,6 +47,20 @@ final class TrackDetailViewController: UIViewController {
                 $0.pause()
             }
             .disposed(by: disposeBag)
+    }
+
+    private func applyStyle() {
+        self.view.setBackgroundGradient()
+
+        thumbnailImageView.layer.cornerRadius = thumbnailImageView.frame.width / 2.0
+        thumbnailImageView.contentMode = .scaleAspectFill
+
+        songNameLabel.textColor = Colors.whiteSolid
+        
+        artistNameLabel.textColor = Colors.graySolid
+
+        playSlider.thumbTintColor = Colors.graySolid
+        playSlider.minimumTrackTintColor = Colors.blueSolid
     }
 
     private func bindToViewModel() {
