@@ -23,6 +23,18 @@ class CirculerSlider: UIControl {
         return label
     }()
 
+    private var innerBackView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private var outerBackView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     // MARK: Public Properties
     var minimumValue: Float = 0
     var maximumValue: Float = 1
@@ -72,6 +84,11 @@ class CirculerSlider: UIControl {
         renderer.updateTrackLayerPath()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.applyStyle()
+    }
+
     // MARK: Private Methods
     private func commonInit() {
         setValue(value)
@@ -84,7 +101,40 @@ class CirculerSlider: UIControl {
         let gestureRecognizer = RotationGestureRecognizer(target: self, action: #selector(CirculerSlider.handleGesture(_:)))
         addGestureRecognizer(gestureRecognizer)
 
+        setVolumeBackView()
         setVolumeLabel()
+    }
+
+    private func setVolumeBackView() {
+        self.addSubview(outerBackView)
+        self.addSubview(innerBackView)
+
+        NSLayoutConstraint.activate([
+            outerBackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            outerBackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            outerBackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7),
+            outerBackView.heightAnchor.constraint(equalTo: outerBackView.widthAnchor),
+
+            innerBackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            innerBackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            innerBackView.widthAnchor.constraint(equalTo: outerBackView.widthAnchor, multiplier: 0.93),
+            innerBackView.heightAnchor.constraint(equalTo: innerBackView.widthAnchor)
+        ])
+    }
+
+    private func applyStyle() {
+        let outerBackViewHalfWidth: CGFloat = outerBackView.frame.width / 2.0
+        outerBackView.setGradient(
+            colors: Colors.backGradient.reversed(),
+            locations: [0.0, 0.9, 1.0],
+            cornerRadius: outerBackViewHalfWidth
+        )
+        let innerBackViewHalfWidth: CGFloat = innerBackView.frame.width / 2.0
+        innerBackView.setGradient(
+            colors: Colors.backGradient,
+            locations: [0.0, 0.4, 1.0],
+            cornerRadius: innerBackViewHalfWidth
+        )
     }
 
     private func setVolumeLabel() {
@@ -135,7 +185,7 @@ private class CirculerSliderRenderer {
         }
     }
 
-    var lineWidth: CGFloat = 15 {
+    var lineWidth: CGFloat = 20 {
         didSet {
             trackLayer.lineWidth = lineWidth
             updateTrackLayerPath()

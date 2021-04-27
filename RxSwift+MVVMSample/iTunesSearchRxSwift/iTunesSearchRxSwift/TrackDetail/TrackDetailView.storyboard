@@ -69,10 +69,21 @@
                                             <constraint firstAttribute="height" constant="16" id="XNv-Mb-lQA"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQA-ns-8iN" customClass="CirculerSlider" customModule="iTunesSearchRxSwift" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3S9-j1-RJ1">
                                         <rect key="frame" x="0.0" y="108" width="331" height="331"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQA-ns-8iN" customClass="CirculerSlider" customModule="iTunesSearchRxSwift" customModuleProvider="target">
+                                                <rect key="frame" x="24.5" y="25" width="282" height="281.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="MQA-ns-8iN" secondAttribute="height" multiplier="1:1" id="bFD-oQ-QOf"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="MQA-ns-8iN" secondAttribute="height" multiplier="1:1" id="viu-GK-0Hg"/>
+                                            <constraint firstItem="MQA-ns-8iN" firstAttribute="width" secondItem="3S9-j1-RJ1" secondAttribute="width" multiplier="0.85" id="AwQ-Qx-LpK"/>
+                                            <constraint firstAttribute="width" secondItem="3S9-j1-RJ1" secondAttribute="height" multiplier="1:1" id="J9G-Mm-onT"/>
+                                            <constraint firstItem="MQA-ns-8iN" firstAttribute="centerY" secondItem="3S9-j1-RJ1" secondAttribute="centerY" id="MlD-cm-S0V"/>
+                                            <constraint firstItem="MQA-ns-8iN" firstAttribute="centerX" secondItem="3S9-j1-RJ1" secondAttribute="centerX" id="dGO-eB-Roc"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlm-ON-aNE">
