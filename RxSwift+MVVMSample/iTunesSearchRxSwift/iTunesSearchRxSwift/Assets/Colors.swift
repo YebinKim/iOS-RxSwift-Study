@@ -20,5 +20,5 @@ final class Colors {
     static let whiteSolid: UIColor = UIColor.white
     static let graySolid: UIColor = UIColor(red: 95/255, green: 106/255, blue: 129/255, alpha: 1)
     static let blueSolid: UIColor = UIColor(red: 90/255, green: 134/255, blue: 255/255, alpha: 1)
-    static let purpleSolid: UIColor = UIColor(red: 168/255, green: 121/255, blue: 255/255, alpha: 1)
+    static let purpleSolid: UIColor = UIColor(red: 163/255, green: 63/255, blue: 255/255, alpha: 1)
 }

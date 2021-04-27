@@ -94,7 +94,6 @@ class CirculerSlider: UIControl {
         setValue(value)
 
         renderer.updateBounds(bounds)
-        renderer.color = tintColor
         renderer.setPointerAngle(renderer.startAngle)
         renderer.setTrackLayer(layer)
 
@@ -163,7 +162,6 @@ class CirculerSlider: UIControl {
         let valueRange = maximumValue - minimumValue
         let angleValue = Float(boundedAngle - startAngle) / Float(angleRange) * valueRange + minimumValue
 
-        print(angleValue)
         setValue(angleValue)
 
         sendActions(for: .valueChanged)
@@ -173,21 +171,26 @@ class CirculerSlider: UIControl {
 private class CirculerSliderRenderer {
 
     // MARK: Private Properties
-    private let trackLayer = CAShapeLayer()
+    private let trackLayer: CAGradientLayer = {
+        let layer = CAGradientLayer()
+        layer.type = .conic
+        layer.startPoint = CGPoint(x: 0.5, y: 0.5)
+        layer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        return layer
+    }()
 
     private var pointerAngle: CGFloat = CGFloat(Double.pi)
 
     // MARK: Public Properties
-    var color: UIColor = Colors.blueSolid {
+    var color: [UIColor] = Colors.highlightGradient {
         didSet {
-            trackLayer.strokeColor = color.cgColor
+            trackLayer.colors = color.map { $0.cgColor }
             updateTrackLayerPath()
         }
     }
 
     var lineWidth: CGFloat = 20 {
         didSet {
-            trackLayer.lineWidth = lineWidth
             updateTrackLayerPath()
         }
     }
@@ -206,9 +209,7 @@ private class CirculerSliderRenderer {
 
     // MARK: Initializer
     init() {
-        trackLayer.fillColor = UIColor.clear.cgColor
-        trackLayer.strokeColor = color.cgColor
-        trackLayer.lineWidth = lineWidth
+        trackLayer.colors = color.map { $0.cgColor }
     }
 
     // MARK: - Interface
@@ -232,8 +233,14 @@ private class CirculerSliderRenderer {
         let offset = lineWidth / 2
         let radius = min(bounds.width, bounds.height) / 2 - offset
 
-        let ring = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: pointerAngle, clockwise: true)
-        trackLayer.path = ring.cgPath
+        let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: pointerAngle, clockwise: true)
+        let mask = CAShapeLayer()
+        mask.fillColor = UIColor.clear.cgColor
+        mask.strokeColor = UIColor.red.cgColor
+        mask.lineWidth = lineWidth
+        mask.lineDashPattern = [2.5, 15]
+        mask.path = path.cgPath
+        trackLayer.mask = mask
     }
 }
 
