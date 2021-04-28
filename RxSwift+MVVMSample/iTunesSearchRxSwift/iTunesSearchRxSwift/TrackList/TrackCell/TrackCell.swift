@@ -25,11 +25,23 @@ final class TrackCell: UITableViewCell {
     // MARK: - Initializer
     override func awakeFromNib() {
         super.awakeFromNib()
+        applyStyle()
     }
 
     override func prepareForReuse() {
         self.thumbnailImageView.image = nil
         self.songNameLabel.text = nil
         self.artistNameLabel.text = nil
+    }
+
+    private func applyStyle() {
+        self.contentView.setGradient(
+            colors: Colors.cellBackGradient,
+            locations: nil
+        )
+
+        thumbnailImageView.layer.cornerRadius = thumbnailImageView.frame.width / 2.0
+        songNameLabel.textColor = Colors.whiteSolid
+        artistNameLabel.textColor = Colors.graySolid
     }
 }

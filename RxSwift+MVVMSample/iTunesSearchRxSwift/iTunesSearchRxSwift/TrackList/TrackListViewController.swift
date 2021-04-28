@@ -35,6 +35,8 @@ final class TrackListViewController: UIViewController {
 
         registCell()
         initializeTableView()
+
+        applyStyle()
         
         didSelectCell()
         bindToViewModel()
@@ -47,12 +49,22 @@ final class TrackListViewController: UIViewController {
     }
 
     private func initializeTableView() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.contentInsetAdjustmentBehavior = .never
 
         tableView.rx
             .setDelegate(self)
             .disposed(by: disposeBag)
+    }
+
+    private func applyStyle() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Colors.whiteSolid]
+
+        searchBar.barTintColor = Colors.darkGraySolid
+        searchBar.searchTextField.backgroundColor = Colors.graySolid
+        searchBar.searchTextField.textColor = Colors.whiteSolid
+
+        self.view.setBackgroundGradient()
     }
 
     private func didSelectCell() {

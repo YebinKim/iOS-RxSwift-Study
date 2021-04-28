@@ -23,23 +23,23 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Scl-Ko-5Jq">
-                        <rect key="frame" x="80" y="20.5" width="318" height="39.5"/>
+                        <rect key="frame" x="88" y="20.5" width="310" height="39.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="songName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjh-gz-vdM">
-                                <rect key="frame" x="0.0" y="0.0" width="318" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="0.0" width="310" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PHN-Cw-DmZ">
-                                <rect key="frame" x="0.0" y="20.5" width="318" height="3"/>
+                                <rect key="frame" x="0.0" y="20.5" width="310" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="g9a-0b-emb"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artistName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="161-Na-OWB">
-                                <rect key="frame" x="0.0" y="23.5" width="318" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <rect key="frame" x="0.0" y="23.5" width="310" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -48,7 +48,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Scl-Ko-5Jq" firstAttribute="centerY" secondItem="76h-Gs-dR3" secondAttribute="centerY" id="0wO-Lk-P4h"/>
-                    <constraint firstItem="Scl-Ko-5Jq" firstAttribute="leading" secondItem="iKr-ck-g4L" secondAttribute="trailing" constant="8" id="7KD-il-Bml"/>
+                    <constraint firstItem="Scl-Ko-5Jq" firstAttribute="leading" secondItem="iKr-ck-g4L" secondAttribute="trailing" constant="16" id="7KD-il-Bml"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Scl-Ko-5Jq" secondAttribute="trailing" constant="16" id="KI3-B2-1sE"/>
                     <constraint firstItem="iKr-ck-g4L" firstAttribute="centerY" secondItem="76h-Gs-dR3" secondAttribute="centerY" id="QtR-vR-i59"/>
                     <constraint firstItem="iKr-ck-g4L" firstAttribute="leading" secondItem="76h-Gs-dR3" secondAttribute="leading" constant="16" id="XvM-eV-0ys"/>
