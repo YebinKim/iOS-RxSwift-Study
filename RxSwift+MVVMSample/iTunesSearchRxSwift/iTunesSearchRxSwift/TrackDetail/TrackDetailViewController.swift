@@ -129,6 +129,24 @@ final class TrackDetailViewController: UIViewController {
                     }
                     .disposed(by: self.disposeBag)
 
+                self.forwardButton.rx.tap
+                    .bind {
+                        guard let item = player.currentItem else { return }
+                        let forwardSeconds: Double = item.currentTime().seconds - 5.0
+                        let seekTime = CMTime(seconds: forwardSeconds, preferredTimescale: 100)
+                        player.currentItem?.seek(to: seekTime, completionHandler: nil)
+                    }
+                    .disposed(by: self.disposeBag)
+
+                self.backwardButton.rx.tap
+                    .bind {
+                        guard let item = player.currentItem else { return }
+                        let backwardSeconds: Double = item.currentTime().seconds + 5.0
+                        let seekTime = CMTime(seconds: backwardSeconds, preferredTimescale: 100)
+                        player.currentItem?.seek(to: seekTime, completionHandler: nil)
+                    }
+                    .disposed(by: self.disposeBag)
+
                 self.volumeSlider.rx.value
                     .bind(to: player.rx.volume)
                     .disposed(by: self.disposeBag)
