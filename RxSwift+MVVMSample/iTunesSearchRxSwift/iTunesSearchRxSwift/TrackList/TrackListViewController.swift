@@ -50,10 +50,17 @@ final class TrackListViewController: UIViewController {
 
     private func initializeTableView() {
         tableView.contentInsetAdjustmentBehavior = .never
+        preventLargeTitleCollapsing()
 
         tableView.rx
             .setDelegate(self)
             .disposed(by: disposeBag)
+    }
+
+    private func preventLargeTitleCollapsing() {
+        let dummyView = UIView()
+        view.addSubview(dummyView)
+        view.sendSubviewToBack(dummyView)
     }
 
     private func applyStyle() {
@@ -61,7 +68,7 @@ final class TrackListViewController: UIViewController {
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Colors.whiteSolid]
 
         searchBar.barTintColor = Colors.darkGraySolid
-        searchBar.searchTextField.backgroundColor = Colors.graySolid
+        searchBar.searchTextField.setBackgroundGradient()
         searchBar.searchTextField.textColor = Colors.whiteSolid
 
         self.view.setBackgroundGradient()
