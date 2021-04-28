@@ -21,7 +21,12 @@ final class TrackDetailViewController: UIViewController {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var volumeSlider: CirculerSlider!
     @IBOutlet weak var playSlider: UISlider!
+    @IBOutlet weak var forwardButtonView: UIView!
+    @IBOutlet weak var forwardButton: UIButton!
+    @IBOutlet weak var playButtonView: UIView!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var backwardButtonView: UIView!
+    @IBOutlet weak var backwardButton: UIButton!
 
     // MARK: - Initializer
     static func instantiate(viewModel: TrackDetailViewModel) -> TrackDetailViewController {
@@ -61,6 +66,42 @@ final class TrackDetailViewController: UIViewController {
 
         playSlider.thumbTintColor = Colors.graySolid
         playSlider.minimumTrackTintColor = Colors.blueSolid
+
+        forwardButtonView.setGradient(
+            colors: Colors.backGradient.reversed(),
+            locations: [0.0, 0.9, 1.0],
+            isRounded: true
+        )
+        forwardButton.setGradientToButton(
+            colors: Colors.backGradient,
+            locations: [0.0, 0.4, 1.0],
+            isRounded: true
+        )
+        forwardButton.tintColor = Colors.whiteSolid
+
+        playButtonView.setGradient(
+            colors: Colors.backGradient.reversed(),
+            locations: [0.0, 0.9, 1.0],
+            isRounded: true
+        )
+        playButton.setGradientToButton(
+            colors: Colors.backGradient,
+            locations: [0.0, 0.4, 1.0],
+            isRounded: true
+        )
+        playButton.tintColor = Colors.whiteSolid
+
+        backwardButtonView.setGradient(
+            colors: Colors.backGradient.reversed(),
+            locations: [0.0, 0.9, 1.0],
+            isRounded: true
+        )
+        backwardButton.setGradientToButton(
+            colors: Colors.backGradient,
+            locations: [0.0, 0.4, 1.0],
+            isRounded: true
+        )
+        backwardButton.tintColor = Colors.whiteSolid
     }
 
     private func bindToViewModel() {
@@ -80,10 +121,10 @@ final class TrackDetailViewController: UIViewController {
                     .bind {
                         if player.timeControlStatus == .paused {
                             player.play()
-                            self.playButton.setTitle("Pause", for: .normal)
+                            self.playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
                         } else {
                             player.pause()
-                            self.playButton.setTitle("Play", for: .normal)
+                            self.playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
                         }
                     }
                     .disposed(by: self.disposeBag)

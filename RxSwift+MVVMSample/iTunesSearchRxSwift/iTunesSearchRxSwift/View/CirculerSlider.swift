@@ -122,17 +122,15 @@ class CirculerSlider: UIControl {
     }
 
     private func applyStyle() {
-        let outerBackViewHalfWidth: CGFloat = outerBackView.frame.width / 2.0
         outerBackView.setGradient(
             colors: Colors.backGradient.reversed(),
             locations: [0.0, 0.9, 1.0],
-            cornerRadius: outerBackViewHalfWidth
+            isRounded: true
         )
-        let innerBackViewHalfWidth: CGFloat = innerBackView.frame.width / 2.0
         innerBackView.setGradient(
             colors: Colors.backGradient,
             locations: [0.0, 0.4, 1.0],
-            cornerRadius: innerBackViewHalfWidth
+            isRounded: true
         )
     }
 

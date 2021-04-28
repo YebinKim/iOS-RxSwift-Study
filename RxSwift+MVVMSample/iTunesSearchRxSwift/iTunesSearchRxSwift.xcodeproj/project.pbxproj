@@ -21,6 +21,7 @@
 		C37041902624AFB7000AC693 /* TrackListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C370418E2624AFB7000AC693 /* TrackListView.storyboard */; };
 		C37041922624AFB9000AC693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37041912624AFB9000AC693 /* Assets.xcassets */; };
 		C37041952624AFB9000AC693 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37041932624AFB9000AC693 /* LaunchScreen.storyboard */; };
+		C3BA5F7B26395AAA00E2FE19 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BA5F7A26395AAA00E2FE19 /* UIButton+Extension.swift */; };
 		C3D3FB902625D08700C0233D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D3FB8F2625D08700C0233D /* AppCoordinator.swift */; };
 		C3D3FBA42625D7A900C0233D /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D3FBA32625D7A900C0233D /* SearchService.swift */; };
 		C3D3FBAC2625DD7400C0233D /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D3FBAB2625DD7400C0233D /* TrackListViewModel.swift */; };
@@ -52,6 +53,7 @@
 		C37041912624AFB9000AC693 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C37041942624AFB9000AC693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C37041962624AFB9000AC693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3BA5F7A26395AAA00E2FE19 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		C3D3FB8F2625D08700C0233D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C3D3FBA32625D7A900C0233D /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		C3D3FBAB2625DD7400C0233D /* TrackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				C31AB02A262DC9D00012437F /* UIImageView+Extension.swift */,
 				C311D26E2636EDB40097F15F /* UIView+Extension.swift */,
+				C3BA5F7A26395AAA00E2FE19 /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				C3F2B931262C698F002F1632 /* Track.swift in Sources */,
 				C311D272263705070097F15F /* Colors.swift in Sources */,
 				C3D3FB902625D08700C0233D /* AppCoordinator.swift in Sources */,
+				C3BA5F7B26395AAA00E2FE19 /* UIButton+Extension.swift in Sources */,
 				C31AB031262DD6A60012437F /* TrackDetailViewController.swift in Sources */,
 				C3F2B948262C7C35002F1632 /* TrackCell.swift in Sources */,
 				C370418D2624AFB7000AC693 /* TrackListViewController.swift in Sources */,
