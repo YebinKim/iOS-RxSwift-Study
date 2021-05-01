@@ -117,36 +117,6 @@ final class TrackDetailViewController: UIViewController {
         viewModel.player
             .asDriver()
             .drive { player in
-                self.playButton.rx.tap
-                    .bind {
-                        if player.timeControlStatus == .paused {
-                            player.play()
-                            self.playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-                        } else {
-                            player.pause()
-                            self.playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-                        }
-                    }
-                    .disposed(by: self.disposeBag)
-
-                self.forwardButton.rx.tap
-                    .bind {
-                        guard let item = player.currentItem else { return }
-                        let forwardSeconds: Double = item.currentTime().seconds - 5.0
-                        let seekTime = CMTime(seconds: forwardSeconds, preferredTimescale: 100)
-                        player.currentItem?.seek(to: seekTime, completionHandler: nil)
-                    }
-                    .disposed(by: self.disposeBag)
-
-                self.backwardButton.rx.tap
-                    .bind {
-                        guard let item = player.currentItem else { return }
-                        let backwardSeconds: Double = item.currentTime().seconds + 5.0
-                        let seekTime = CMTime(seconds: backwardSeconds, preferredTimescale: 100)
-                        player.currentItem?.seek(to: seekTime, completionHandler: nil)
-                    }
-                    .disposed(by: self.disposeBag)
-
                 self.volumeSlider.rx.value
                     .bind(to: player.rx.volume)
                     .disposed(by: self.disposeBag)
@@ -168,5 +138,35 @@ final class TrackDetailViewController: UIViewController {
                 }
             }
             .disposed(by: disposeBag)
+
+        self.playButton.rx.tap
+            .bind {
+                if self.viewModel.player.value.timeControlStatus == .paused {
+                    self.viewModel.player.value.play()
+                    self.playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                } else {
+                    self.viewModel.player.value.pause()
+                    self.playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                }
+            }
+            .disposed(by: self.disposeBag)
+
+        self.forwardButton.rx.tap
+            .bind {
+                guard let item = self.viewModel.player.value.currentItem else { return }
+                let forwardSeconds: Double = item.currentTime().seconds - 5.0
+                let seekTime = CMTime(seconds: forwardSeconds, preferredTimescale: 100)
+                self.viewModel.player.value.currentItem?.seek(to: seekTime, completionHandler: nil)
+            }
+            .disposed(by: self.disposeBag)
+
+        self.backwardButton.rx.tap
+            .bind {
+                guard let item = self.viewModel.player.value.currentItem else { return }
+                let backwardSeconds: Double = item.currentTime().seconds + 5.0
+                let seekTime = CMTime(seconds: backwardSeconds, preferredTimescale: 100)
+                self.viewModel.player.value.currentItem?.seek(to: seekTime, completionHandler: nil)
+            }
+            .disposed(by: self.disposeBag)
     }
 }
